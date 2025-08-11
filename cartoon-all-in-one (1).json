@@ -1,0 +1,285 @@
+{
+  "12": {
+    "inputs": {
+      "image": "image.jpg"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load Image"
+    }
+  },
+  "75": {
+    "inputs": {
+      "upscale_by": [
+        "255",
+        0
+      ],
+      "seed": ARG_SEED_INT,
+      "steps": 20,
+      "cfg": 6,
+      "sampler_name": "euler_ancestral",
+      "scheduler": "normal",
+      "denoise": ARG_CREATIVITY_FLOAT,
+      "mode_type": "Linear",
+      "tile_width": ARG_FRACTALITY_INT,
+      "tile_height": ARG_FRACTALITY_INT,
+      "mask_blur": 16,
+      "tile_padding": 64,
+      "seam_fix_mode": "None",
+      "seam_fix_denoise": 1,
+      "seam_fix_width": 128,
+      "seam_fix_mask_blur": 8,
+      "seam_fix_padding": 16,
+      "force_uniform_tiles": "enable",
+      "tiled_decode": false,
+      "image": [
+        "12",
+        0
+      ],
+      "model": [
+        "240",
+        0
+      ],
+      "positive": [
+        "214",
+        0
+      ],
+      "negative": [
+        "214",
+        1
+      ],
+      "vae": [
+        "76",
+        2
+      ],
+      "upscale_model": [
+        "78",
+        0
+      ]
+    },
+    "class_type": "UltimateSDUpscale",
+    "_meta": {
+      "title": "Ultimate SD Upscale"
+    }
+  },
+  "76": {
+    "inputs": {
+      "ckpt_name": "dreamshaperXL_v21TurboDPMSDE.safetensors"
+    },
+    "class_type": "CheckpointLoaderSimple",
+    "_meta": {
+      "title": "Load Checkpoint"
+    }
+  },
+  "78": {
+    "inputs": {
+      "model_name": "4x-UltraSharp.pth"
+    },
+    "class_type": "UpscaleModelLoader",
+    "_meta": {
+      "title": "Load Upscale Model"
+    }
+  },
+  "80": {
+    "inputs": {
+      "control_net_name": "ttplanetSDXLControlnet_v20Fp16.safetensors"
+    },
+    "class_type": "ControlNetLoader",
+    "_meta": {
+      "title": "Load ControlNet Model"
+    }
+  },
+  "117": {
+    "inputs": {
+      "filename_prefix": "i",
+      "images": [
+        "254",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "Save Image"
+    }
+  },
+  "214": {
+    "inputs": {
+      "strength": 0.6,
+      "start_percent": 0,
+      "end_percent": 0.9,
+      "positive": [
+        "259",
+        0
+      ],
+      "negative": [
+        "260",
+        0
+      ],
+      "control_net": [
+        "80",
+        0
+      ],
+      "image": [
+        "12",
+        0
+      ]
+    },
+    "class_type": "ControlNetApplyAdvanced",
+    "_meta": {
+      "title": "Apply ControlNet"
+    }
+  },
+  "240": {
+    "inputs": {
+      "lora_name": "add-detail-xl.safetensors",
+      "strength_model": 1,
+      "strength_clip": 1,
+      "model": [
+        "76",
+        0
+      ],
+      "clip": [
+        "76",
+        1
+      ]
+    },
+    "class_type": "LoraLoader",
+    "_meta": {
+      "title": "Load LoRA"
+    }
+  },
+  "241": {
+    "inputs": {
+      "delimiter": "",
+      "clean_whitespace": "true",
+      "text_a": [
+        "261",
+        0
+      ],
+      "text_b": [
+        "257",
+        2
+      ]
+    },
+    "class_type": "Text Concatenate",
+    "_meta": {
+      "title": "Text Concatenate"
+    }
+  },
+  "243": {
+    "inputs": {
+      "text_0": "The image shows a vibrant painting of pink and yellow flowers on a bright yellow background. The flowers are arranged in a seamless pattern, creating a beautiful and eye-catching design.",
+      "text": [
+        "257",
+        2
+      ]
+    },
+    "class_type": "ShowText|pysssss",
+    "_meta": {
+      "title": "Show Text 🐍"
+    }
+  },
+  "254": {
+    "inputs": {
+      "method": "mvgd",
+      "image_output": "Hide",
+      "save_prefix": "ComfyUI",
+      "image_ref": [
+        "12",
+        0
+      ],
+      "image_target": [
+        "75",
+        0
+      ]
+    },
+    "class_type": "easy imageColorMatch",
+    "_meta": {
+      "title": "Image Color Match"
+    }
+  },
+  "255": {
+    "inputs": {
+      "value": ARG_SCALE_FLOAT
+    },
+    "class_type": "easy float",
+    "_meta": {
+      "title": "Float"
+    }
+  },
+  "257": {
+    "inputs": {
+      "text_input": "",
+      "task": "detailed_caption",
+      "fill_mask": true,
+      "keep_model_loaded": false,
+      "max_new_tokens": 1024,
+      "num_beams": 3,
+      "do_sample": true,
+      "output_mask_select": "",
+      "seed": 173591411169075,
+      "image": [
+        "12",
+        0
+      ],
+      "florence2_model": [
+        "258",
+        0
+      ]
+    },
+    "class_type": "Florence2Run",
+    "_meta": {
+      "title": "Florence2Run"
+    }
+  },
+  "258": {
+    "inputs": {
+      "model": "Florence-2-large",
+      "precision": "fp16",
+      "attention": "sdpa",
+      "convert_to_safetensors": false
+    },
+    "class_type": "Florence2ModelLoader",
+    "_meta": {
+      "title": "Florence2ModelLoader"
+    }
+  },
+  "259": {
+    "inputs": {
+      "text": [
+        "241",
+        0
+      ],
+      "clip": [
+        "240",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Prompt)"
+    }
+  },
+  "260": {
+    "inputs": {
+      "text": "ugly,deformed,noisy,blurry,low contrast,realism,photorealistic,(simple background,cgi,render,blurry,worst quality,low quality,boring,noisy, plastic, smooth, predictable,ugly,mundane,open mouth, distorted,muddled,render,amateur,compressed,watermark, logo,painting,sketch,fake,artificial,collage:1.4),",
+      "clip": [
+        "240",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Prompt)"
+    }
+  },
+  "261": {
+    "inputs": {
+      "text": "ARG_POSITIVE_PROMPT_STRING"
+    },
+    "class_type": "String Input",
+    "_meta": {
+      "title": "String Input"
+    }
+  }
+}
